@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    restart: always
+    ports:
+      - "3333:3333"
+    environment:
+      TZ: UTC
+      PORT: 3333
+      HOST: localhost
+      LOG_LEVEL: info
+      APP_KEY: dPd7XiX3MDOrVYOUFec8aL8P1PsW_cEN
+      NODE_ENV: development
+      DB_HOST: db # Aqui é importante referenciar o serviço do MySQL no Docker Compose
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: 1234
+      DB_DATABASE: gasola
+
+  db:
+    image: mysql:8.0.23
+    container_name: gasola_db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: gasola
