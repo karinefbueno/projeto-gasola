@@ -1,10 +1,10 @@
-import { ContainerMain, Input, SearchBar, ContainerCard } from "./style";
+import { ContainerMain, Input, SearchBar, ContainerCard, IconGitHub,Div } from "./style";
 import { useState } from "react";
 import {  fetchGitHubData } from '../../utils/api';
 import Button from "../Button";
 import { ReposProps } from '../../types/types';
-// import CardUser from "../CardUser";
 import CardRepo from "../CardRepo";
+import gitCat from '../../images/github_main.png'
 
 const INITIAL_VALUE = {
   name: '',
@@ -27,8 +27,6 @@ function Main() {
     const inputName = input.name.replace(/\s+/g,'')
     if (inputName.trim() !== '') {
       try {
-       
-
         const data = await fetchGitHubData(inputName)
         console.log(data.items)
         setRepos(data.items)
@@ -40,6 +38,8 @@ function Main() {
 
   return (
     <>
+      <Div>
+      <IconGitHub src= {gitCat} />
       <ContainerMain>
         <SearchBar>
           <Input
@@ -62,6 +62,7 @@ function Main() {
         </ContainerCard>
         
       </ContainerMain>
+      </Div>
     </>
   );
 }
