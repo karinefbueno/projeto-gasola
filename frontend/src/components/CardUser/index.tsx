@@ -3,7 +3,6 @@ import {  UserProps } from "../../types/types";
 import { useEffect, useState } from "react";
 import { fetchCreateFavorite, fetchDeleteFavorite } from "../../utils/api";
 import iconCat from "../../images/github_header.png";
-import iconSearch from "../../images/search.svg";
 import { formatarData } from "../../utils/functionFormatData";
 
 
@@ -57,7 +56,6 @@ function CardUser({ id, name, avatar_url, created_at, followers, following, loca
         </ContainerInfos>
         <div>
         <ContainerIcon>
-        <img src={iconSearch} alt="" />  
         <p>{location}</p>
         </ContainerIcon>
         <ContainerIcon>

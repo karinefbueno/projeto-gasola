@@ -1,25 +1,32 @@
 import styled from "styled-components";
 
 export const ContainerCardRepo = styled.div`
+  padding: 20px;
   margin: 30px;
   width: 300px;
   font-size: 20px;
   height: 200px;
   color: white;
   border-radius: 10px;
-  opacity: 0.8;
+  border:1px solid #444c56;
 
-  button {
-    width: 100%;
-    height: 100%;
-    font-size: 18px;
-    border-radius: 10px;
-    border:1px solid #444c56;
-    background-color: transparent;
-      color: #c5d1de;
+button {
+  width: 100%;
+  height: 80%;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  color: #c5d1de;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
 
-  }
-`;
+button:hover {
+  background-color: rgba(197, 209, 222, 0.2); 
+  color: #ffffff; 
+  cursor: pointer;
+}
+`
 
 export const Img = styled.img`
   width: 100px;
@@ -57,3 +64,10 @@ export const ModalContent = styled.div`
   background-color: transparent;
   z-index: 1001;
 `;
+
+export const LinkGitHub = styled.a`
+font-size: 12px;
+color: #316dca;
+text-decoration: none;
+
+`

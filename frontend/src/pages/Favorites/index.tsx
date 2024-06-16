@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import { fetchFavorites } from "../../utils/api";
 import CardRepo from "../../components/CardRepo";
 import { ReposProps } from "../../types/types"; 
-import { ContainerFavoriteCard, ContainerFavorite } from "./style";
+import { ContainerFavoriteCard, ContainerFavorite,Title } from "./style";
 
 function Favorites() {
   const [favorites, setFavorites] = useState<ReposProps[]>([]);
@@ -30,6 +30,7 @@ function Favorites() {
     <>
     <ContainerFavorite>
       <Header text="Home" href="/" />
+      <Title>My Favorites</Title>
       <ContainerFavoriteCard >
         {favorites.map((item: ReposProps) => (
           <CardRepo

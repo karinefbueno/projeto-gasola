@@ -1,4 +1,5 @@
-import { ContainerCardRepo, Img, ModalContainer, ModalContent, Overlay } from "./style";
+import { ContainerCardRepo,
+   Img, ModalContainer, ModalContent, Overlay,LinkGitHub } from "./style";
 import { ReposProps, UserProps } from "../../types/types";
 import { fetchGitUser } from "../../utils/api";
 import { useState } from "react";
@@ -61,12 +62,10 @@ function CardRepo({id, owner}: ReposProps) {
       }
       {!showUserCard &&
         <ContainerCardRepo id={id}>
+         <LinkGitHub href={owner.html_url}>GitHub</LinkGitHub>
           <button onClick={handleClick}>
             <Img src={owner.avatar_url} alt="user-avatar" />
-            <div>
               <h4>{owner.login}</h4>
-              <p>{owner.html_url}</p>
-            </div> 
           </button>
         </ContainerCardRepo>
       }
