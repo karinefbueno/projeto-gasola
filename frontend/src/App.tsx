@@ -1,10 +1,15 @@
+import { Route , Routes} from "react-router-dom"
+import Favorites from "./pages/Favorites"
 import Home from "./pages/Home"
 
 function App() {
 
   return (
     <>
-     <Home/>
+    <Routes>
+    <Route path="/" element= {<Home/>} ></Route> 
+    <Route path="/favorite" element= {<Favorites/>} ></Route> 
+     </Routes>
     </>
   )
 }
