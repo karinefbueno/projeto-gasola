@@ -6,18 +6,15 @@ export type ButtonProps = {
 
 export type ReposProps = {
 id: string;
-// name: string;
 owner :{
-avatar_url: string;
-html_url: string;
 login: string;
+avatar_url: string;
+html_url: string,
 }
-// followers_url: string;
-// following_url: string;
-// created_at: string;
 }
 
 export type UserProps = {
+name: string;
 id:string;  
 location: string | null;
 login: string;
@@ -29,5 +26,17 @@ created_at: string;
 heartChecked?:string;
 heartEmpty?:string,
 html_url: string,
+isFavorite: boolean,
+}
+export type FavoriteProps = {
+id:string;  
+name: string | null
+login: string;
+avatar_url: string;
+html_url: string,
+}
 
+export type HeaderProps ={
+  text:string,
+  href:string
 }
