@@ -7,4 +7,5 @@ export const ComponentButton = styled.button`
     color: white;
     background-color: #316dca;
     font-size: 18px;
+    border: none;
 `
