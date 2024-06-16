@@ -2,6 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import mapStatusHTTP from '../../utils/map_status_http.js'
 import FavoriteService from '../service/favorite.service.js'
 import { inject } from '@adonisjs/core'
+import { FavoriteTypes } from '../../types/types.js'
 
 @inject()
 export default class FavoritesController {
@@ -9,7 +10,9 @@ export default class FavoritesController {
 
   async createFavorite({ request, response }: HttpContext): Promise<void> {
     const dataFavorite = request.body()
-    const { status, data } = await this.favoriteService.createFavorite(dataFavorite)
+    const { status, data } = await this.favoriteService.createFavorite(
+      dataFavorite as FavoriteTypes
+    )
     response.status(mapStatusHTTP(status)).json(data)
   }
 
