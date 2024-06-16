@@ -6,9 +6,23 @@ import CardUser from "../CardUser";
 import heart from '../../images/heart.svg';
 import heartEmpty from '../../images/heart_emp.svg'
 
+const INICIAL_VALUE = {
+    name: '',
+    id: '',
+    location: null,
+    login: '',
+    avatar_url: '',
+    public_repos: '',
+    followers: '',
+    following: '',
+    created_at: '',
+    html_url: '',
+    isFavorite: false,
+}
+
 
 function CardRepo({id, owner}: ReposProps) {
-  const [user, setUser] = useState<UserProps>({});
+  const [user, setUser] = useState<UserProps>(INICIAL_VALUE);
   const [showUserCard, setShowUserCard] = useState<boolean>(false);
 
   const handleClick = async () => {
@@ -28,6 +42,8 @@ function CardRepo({id, owner}: ReposProps) {
           <Overlay onClick={() => setShowUserCard(false)} />
           <ModalContent>
             <CardUser 
+              isFavorite={user.isFavorite}
+              name={user.name}
               html_url={user.html_url}
               avatar_url={user.avatar_url}
               created_at={user.created_at}
@@ -48,7 +64,7 @@ function CardRepo({id, owner}: ReposProps) {
           <button onClick={handleClick}>
             <Img src={owner.avatar_url} alt="user-avatar" />
             <div>
-              <h2>{owner.login}</h2>
+              <h4>{owner.login}</h4>
               <p>{owner.html_url}</p>
             </div> 
           </button>
