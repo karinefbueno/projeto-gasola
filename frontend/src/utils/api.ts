@@ -1,14 +1,17 @@
 import { FavoriteProps, ReposProps, UserProps } from "../types/types";
 
-const API_BASE_URL = 'http://localhost:3333';
+const HOST = import.meta.env.VITE_HOST || 'http://localhost:3333';
 
 export async function fetchGitUser(username: string): Promise<UserProps> {
   try {
-    const response = await fetch(`${API_BASE_URL}/users/${username}`);
+    const response = await fetch(`${HOST}/users/${username}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    return await response.json();
+    const data = await response.json();
+        console.log('linha 8',data)
+
+    return data;
   } catch (error) {
     console.error('Failed to fetch data:', error);
     throw error;
@@ -17,7 +20,7 @@ export async function fetchGitUser(username: string): Promise<UserProps> {
 
 export async function fetchGitHubData(query: string): Promise<ReposProps> {
   try {
-    const response = await fetch(`${API_BASE_URL}/repos?query=${query}`);
+    const response = await fetch(`${HOST}/repos?query=${query}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -30,7 +33,7 @@ export async function fetchGitHubData(query: string): Promise<ReposProps> {
 
 export async function fetchCreateFavorite(body:FavoriteProps) {
   try {
-    const response = await fetch(`${API_BASE_URL}/favorite`, {
+    const response = await fetch(`${HOST}/favorite`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +54,7 @@ export async function fetchCreateFavorite(body:FavoriteProps) {
 
 export async function fetchFavorites(): Promise<FavoriteProps[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/favorite`);
+    const response = await fetch(`${HOST}/favorite`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -64,7 +67,7 @@ export async function fetchFavorites(): Promise<FavoriteProps[]> {
 
 export async function fetchDeleteFavorite(id: string): Promise<void> {
   try {
-    const response = await fetch(`${API_BASE_URL}/favorite/${id}`, {
+    const response = await fetch(`${HOST}/favorite/${id}`, {
       method: 'DELETE',
     });
     if (!response.ok) {

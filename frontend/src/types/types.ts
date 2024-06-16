@@ -28,6 +28,7 @@ heartEmpty?:string,
 html_url: string,
 isFavorite: boolean,
 }
+
 export type FavoriteProps = {
 id:string;  
 name: string | null
