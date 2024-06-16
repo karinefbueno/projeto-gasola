@@ -1,37 +1,49 @@
 import styled from "styled-components";
 
 export const Avatar = styled.img`
+margin-left: 20px;
 margin-top: 100px;
 width: 200px;
 height: 200px;
 border-radius: 100px;
 `
-
 export const ContainerText =styled.div`
 margin-top: 100px;
-margin-left: 50px;
-margin-right: 50px;
+padding-left: 50px;
 `
-
 export const ContainerCardUser =styled.div`
 padding-top: 20px;
 display: flex;
 justify-content: center;
+align-items: flex-start;
 width: 800px;
 font-size:20px;
 height: 500px;
-background-color: #444c56;
+background-color: #545d68;
 color: white;
 border-radius: 20px;
 `
 export const Heart =styled.img`
+margin-left: -30px;
  width: 40px;
  height: 40px ;
 `
 
+export const IconCat =styled.img`
+  width: 30px;
+  height: 30px;
+`
+
+export const ContainerIcon =styled.div`
+display: flex;
+align-items: center;
+gap: 16px;
+margin-top: 20px;
+`
 export const ContainerName =styled.div`
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
+gap: 30px;
 width: auto;
 font-size:20px;
 height: 70px;
@@ -41,17 +53,18 @@ export const ContainerInfos =styled.div`
 display: flex;
 text-align: justify;
 justify-content: space-around;
-align-items: center;
+align-items:center;
 margin-bottom: 30px;
-width: 400px;
+width: auto;
 font-size:20px;
-height: 100px;
+height: 150px;
 background-color: rgb(13, 17, 23);
 color: white;
 border-radius: 10px;
 
 p{
   display: flex;
+  gap: 10px;
   flex-direction: column;
 }
 `

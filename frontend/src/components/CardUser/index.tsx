@@ -1,22 +1,35 @@
-import { ContainerCardUser, ContainerInfos, ContainerName, Avatar, ContainerText, Heart } from "./style";
-import { UserProps } from "../../types/types";
-import { useState } from "react";
+import { ContainerCardUser, ContainerInfos, ContainerName, Avatar, ContainerText, Heart, IconCat, ContainerIcon } from "./style";
+import {  UserProps } from "../../types/types";
+import { useEffect, useState } from "react";
+import { fetchCreateFavorite, fetchDeleteFavorite } from "../../utils/api";
+import iconCat from "../../images/github_header.png";
+import iconSearch from "../../images/search.svg";
+import { formatarData } from "../../utils/functionFormatData";
 
-function CardUser({ id, avatar_url, created_at, followers, following, location, login, public_repos, heartChecked, heartEmpty,html_url }: UserProps) {
-  const [checked, setChecked] = useState<boolean>(false);
-  const [favoriteUser, setFavoriteUser] = useState<any>(null);
+
+function CardUser({ id, name, avatar_url, created_at, followers, following, location, login, public_repos, heartChecked, heartEmpty,html_url,isFavorite }: UserProps) {
+  const [checked, setChecked] = useState<boolean>(isFavorite);
+
+   useEffect(() => {
+    setChecked(isFavorite);
+  }, [isFavorite]);
+
+  const body= {
+    id: id,
+    name: name,
+    login: login,
+    avatar_url: avatar_url,
+    html_url: html_url,
+  }
 
   const handleChange = async () => {
     if (!checked) {
       setChecked(true);
-      // inserir []
-      setFavoriteUser({
-        id, avatar_url, login,html_url
-      });
+      await fetchCreateFavorite(body);
+
     } else {
       setChecked(false);
-      // remover do bd
-      setFavoriteUser(null);
+      await fetchDeleteFavorite(id)
     }
   };
 
@@ -25,8 +38,8 @@ function CardUser({ id, avatar_url, created_at, followers, following, location, 
       <Avatar src={avatar_url} alt={`${login}'s avatar`} />
       <ContainerText>
         <ContainerName>
-          <h2>{login}</h2>
-          <p>{created_at}</p>
+          <h3>{login}</h3>
+          <p>{formatarData(created_at)}</p>
         </ContainerName>
         <ContainerInfos>
           <p>
@@ -42,8 +55,16 @@ function CardUser({ id, avatar_url, created_at, followers, following, location, 
             {following}
           </p>
         </ContainerInfos>
+        <div>
+        <ContainerIcon>
+        <img src={iconSearch} alt="" />  
         <p>{location}</p>
+        </ContainerIcon>
+        <ContainerIcon>
+         <IconCat src={iconCat} alt="" />  
         <p>{html_url}</p>
+        </ContainerIcon>
+        </div>
       </ContainerText>
       <input
           id={`favorite-checkbox-${id}`}

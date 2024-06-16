@@ -5,15 +5,19 @@ export const ContainerCardRepo = styled.div`
   width: 300px;
   font-size: 20px;
   height: 200px;
-  background-color: #444c56;
   color: white;
   border-radius: 10px;
+  opacity: 0.8;
 
   button {
     width: 100%;
     height: 100%;
+    font-size: 18px;
     border-radius: 10px;
-    background-color: #444c56;
+    border:1px solid #444c56;
+    background-color: transparent;
+      color: #c5d1de;
+
   }
 `;
 
