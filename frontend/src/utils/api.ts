@@ -1,4 +1,4 @@
-import { FavoriteProps, ReposProps, UserProps } from "../types/types";
+import { BodyType, FavoriteProps, UserProps } from "../types/types";
 
 const HOST = import.meta.env.VITE_HOST || 'http://localhost:3333';
 
@@ -9,7 +9,6 @@ export async function fetchGitUser(username: string): Promise<UserProps> {
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-        console.log('linha 8',data)
 
     return data;
   } catch (error) {
@@ -18,7 +17,7 @@ export async function fetchGitUser(username: string): Promise<UserProps> {
   }
 }
 
-export async function fetchGitHubData(query: string): Promise<ReposProps> {
+export async function fetchGitHubData(query: string): Promise<any> {
   try {
     const response = await fetch(`${HOST}/repos?query=${query}`);
     if (!response.ok) {
@@ -31,8 +30,8 @@ export async function fetchGitHubData(query: string): Promise<ReposProps> {
   }
 }
 
-export async function fetchCreateFavorite(body:FavoriteProps) {
-  try {
+export async function fetchCreateFavorite(body:BodyType){
+    try {
     const response = await fetch(`${HOST}/favorite`, {
       method: 'POST',
       headers: {

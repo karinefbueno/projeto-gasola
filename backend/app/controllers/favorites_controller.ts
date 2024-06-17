@@ -16,7 +16,7 @@ export default class FavoritesController {
     response.status(mapStatusHTTP(status)).json(data)
   }
 
-  async findAll({ request, response }: HttpContext) {
+  async findAll({ response }: HttpContext) {
     const { status, data } = await this.favoriteService.findAll()
     return response.status(mapStatusHTTP(status)).json(data)
   }
