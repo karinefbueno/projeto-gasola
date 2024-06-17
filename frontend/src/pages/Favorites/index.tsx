@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import { fetchFavorites } from "../../utils/api";
 import CardRepo from "../../components/CardRepo";
 import { ReposProps } from "../../types/types"; 
-import { ContainerFavoriteCard, ContainerFavorite,Title } from "./style";
+import { ContainerFavoriteCard, ContainerFavorite,Title ,P} from "./style";
 import context from "../../Context/Context";
 
 
@@ -37,6 +37,7 @@ function Favorites() {
       <Header text="Home" href="/" />
       <Title>My Favorites</Title>
       <ContainerFavoriteCard >
+        {favorites.length==0 && <P>No favorite Github users have been added!</P>}
         {favorites.map((item: ReposProps) => (
           <CardRepo
             key={item.id}
