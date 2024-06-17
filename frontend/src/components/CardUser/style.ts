@@ -12,7 +12,7 @@ margin-top: 100px;
 padding-left: 50px;
 `
 export const ContainerCardUser =styled.div`
-padding-top: 20px;
+padding: 20px;
 display: flex;
 justify-content: center;
 align-items: flex-start;
@@ -22,6 +22,17 @@ height: 500px;
 background-color: #545d68;
 color: white;
 border-radius: 20px;
+
+@media (max-width: 660px) {
+width:auto;
+flex-direction: column;
+align-items: center;
+justify-content:center;
+font-size: 12px;
+height: auto;
+padding: 16px;
+
+}
 `
 export const Heart =styled.img`
 margin-left: -30px;
@@ -39,6 +50,11 @@ display: flex;
 align-items: center;
 gap: 16px;
 margin-top: 20px;
+
+a{
+  text-decoration: none;
+  color:white;
+}
 `
 export const ContainerName =styled.div`
 display: flex;
@@ -61,6 +77,11 @@ height: 150px;
 background-color: rgb(13, 17, 23);
 color: white;
 border-radius: 10px;
+
+/* @media (max-width: 660px) {
+width: 100px;
+height: 100px;
+} */
 
 p{
   display: flex;
