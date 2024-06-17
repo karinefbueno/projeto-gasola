@@ -10,6 +10,7 @@ export const ContainerCardRepo = styled.div`
   border-radius: 10px;
   border:1px solid #444c56;
 
+
 button {
   width: 100%;
   height: 80%;
@@ -32,6 +33,7 @@ export const Img = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 100px;
+  margin-bottom: 8px;
 `;
 
 export const ModalContainer = styled.div`
@@ -69,5 +71,4 @@ export const LinkGitHub = styled.a`
 font-size: 12px;
 color: #316dca;
 text-decoration: none;
-
 `

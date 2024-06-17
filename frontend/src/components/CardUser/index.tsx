@@ -1,13 +1,16 @@
 import { ContainerCardUser, ContainerInfos, ContainerName, Avatar, ContainerText, Heart, IconCat, ContainerIcon } from "./style";
 import {  UserProps } from "../../types/types";
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext} from "react";
 import { fetchCreateFavorite, fetchDeleteFavorite } from "../../utils/api";
 import iconCat from "../../images/github_header.png";
 import { formatarData } from "../../utils/functionFormatData";
+import context from "../../Context/Context";
 
 
 function CardUser({ id, name, avatar_url, created_at, followers, following, location, login, public_repos, heartChecked, heartEmpty,html_url,isFavorite }: UserProps) {
   const [checked, setChecked] = useState<boolean>(isFavorite);
+    const {setFavorited, favorited} = useContext(context);
+
 
    useEffect(() => {
     setChecked(isFavorite);
@@ -24,12 +27,17 @@ function CardUser({ id, name, avatar_url, created_at, followers, following, loca
   const handleChange = async () => {
     if (!checked) {
       setChecked(true);
+
       await fetchCreateFavorite(body);
 
     } else {
       setChecked(false);
+      setFavorited(!favorited)
+      console.log(favorited)
       await fetchDeleteFavorite(id)
+      
     }
+
   };
 
   return (
@@ -60,7 +68,7 @@ function CardUser({ id, name, avatar_url, created_at, followers, following, loca
         </ContainerIcon>
         <ContainerIcon>
          <IconCat src={iconCat} alt="" />  
-        <p>{html_url}</p>
+        <a href={html_url}>{html_url}</a>
         </ContainerIcon>
         </div>
       </ContainerText>

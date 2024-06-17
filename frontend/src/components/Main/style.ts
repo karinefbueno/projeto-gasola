@@ -8,13 +8,19 @@ width: 100%;
 export const SearchBar = styled.div`
 display: flex;
 margin-top: 60px;
-/* position: relative; */
 justify-content: center;
 
 Button{
   margin-top: 8px;
   margin-left: -110px;
 }
+
+@media (max-width: 600px) {
+Button{
+  margin-left: -60px;
+}
+}
+
 `
 export const Input = styled.input`
 margin-bottom: 60px;
@@ -31,6 +37,14 @@ border: none;
     color: white;
     background-color: #444c56;
   }
+
+  @media (max-width: 660px) {
+  max-width: 300px;
+  &::placeholder {
+    font-size: 12px;
+    text-align: justify;
+  }
+}
 `
 
 export const ContainerCard = styled.div`
@@ -38,10 +52,22 @@ margin: auto;
 justify-content: center;
 display: flex;
 flex-wrap: wrap;
+
+@media (max-width: 660px) {
+align-items: center ;
+width: 100px;
+height: 100px;
+}
+
 `
 export const IconGitHub = styled.img`
 width: 400px;
 height: 400px;
+
+@media (max-width: 660px) {
+width: 100px;
+height: 100px;
+}
 `
 export const Div = styled.div`
 display: flex;
@@ -49,4 +75,13 @@ justify-content: center;
 margin-top: 100px;
 margin-left: auto;
 margin-right: auto;
+
+@media (max-width: 660px) {
+margin-top:200px;
+flex-direction: column;
+align-items: center;
+width: 100px;
+height: 100px;
+}
 `
+

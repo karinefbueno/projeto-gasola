@@ -13,6 +13,17 @@ html_url: string,
 }
 }
 
+export type DataProps = 
+ [
+id: string,
+owner :{
+login: string;
+avatar_url: string;
+html_url: string,
+}
+]
+
+
 export type UserProps = {
 name: string;
 id:string;  
@@ -33,11 +44,19 @@ export type FavoriteProps = {
 id:string;  
 name: string | null
 login: string;
+avatarUrl: string;
+htmlUrl: string,
+}
+
+export type BodyType= {
+id:string;  
+name: string | null
+login: string;
 avatar_url: string;
 html_url: string,
 }
 
 export type HeaderProps ={
   text:string,
-  href:string
+  href:string,
 }

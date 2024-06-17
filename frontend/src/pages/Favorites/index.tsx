@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { fetchFavorites } from "../../utils/api";
 import CardRepo from "../../components/CardRepo";
 import { ReposProps } from "../../types/types"; 
 import { ContainerFavoriteCard, ContainerFavorite,Title } from "./style";
+import context from "../../Context/Context";
+
+
 
 function Favorites() {
   const [favorites, setFavorites] = useState<ReposProps[]>([]);
+   const { favorited} = useContext(context);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +29,7 @@ function Favorites() {
     };
 
     fetchData();
-  }, []);
+  }, [favorited]);
 
   return (
     <>

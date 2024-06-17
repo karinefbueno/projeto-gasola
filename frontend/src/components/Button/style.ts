@@ -8,4 +8,12 @@ export const ComponentButton = styled.button`
     background-color: #316dca;
     font-size: 18px;
     border: none;
+
+    @media (max-width: 660px) {    
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    margin-top: 8px;
+}
 `
