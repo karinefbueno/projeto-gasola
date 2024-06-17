@@ -19,3 +19,8 @@ color:#316dca;
 font-size: 60px;
 `
 
+export const P = styled.p`
+  font-size: 30px;
+  color: white;
+`
+
