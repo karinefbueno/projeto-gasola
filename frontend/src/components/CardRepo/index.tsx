@@ -6,6 +6,7 @@ import { useState } from "react";
 import CardUser from "../CardUser";
 import heart from '../../images/heart.svg';
 import heartEmpty from '../../images/heart_emp.svg'
+import { separarNomeComRegex } from "../../utils/functionSeparaNomes";
 
 const INICIAL_VALUE = {
     name: '',
@@ -52,7 +53,7 @@ function CardRepo({id, owner}: ReposProps) {
               following={user.following}
               id={user.id}
               location={user.location}
-              login={user.login.toUpperCase()}
+              login={user.login}
               public_repos={user.public_repos}
               heartChecked={heart}
               heartEmpty={heartEmpty}
@@ -65,7 +66,7 @@ function CardRepo({id, owner}: ReposProps) {
          <LinkGitHub href={owner.html_url}>GitHub</LinkGitHub>
           <button onClick={handleClick}>
             <Img src={owner.avatar_url} alt="user-avatar" />
-              <h4>{owner.login.toUpperCase()}</h4>
+              <h4>{owner.login}</h4>
           </button>
         </ContainerCardRepo>
       }
