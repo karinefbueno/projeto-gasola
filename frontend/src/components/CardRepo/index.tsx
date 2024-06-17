@@ -52,7 +52,7 @@ function CardRepo({id, owner}: ReposProps) {
               following={user.following}
               id={user.id}
               location={user.location}
-              login={user.login}
+              login={user.login.toUpperCase()}
               public_repos={user.public_repos}
               heartChecked={heart}
               heartEmpty={heartEmpty}
@@ -65,7 +65,7 @@ function CardRepo({id, owner}: ReposProps) {
          <LinkGitHub href={owner.html_url}>GitHub</LinkGitHub>
           <button onClick={handleClick}>
             <Img src={owner.avatar_url} alt="user-avatar" />
-              <h4>{owner.login}</h4>
+              <h4>{owner.login.toUpperCase()}</h4>
           </button>
         </ContainerCardRepo>
       }
