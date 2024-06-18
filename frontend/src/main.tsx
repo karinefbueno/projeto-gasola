@@ -9,11 +9,9 @@ import Provider from './Context/Provider.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <Provider >
-  <React.StrictMode>
-  <GlobalStyle/>
-	<App />
-  </React.StrictMode>
-      </Provider >
+      <GlobalStyle />
+      <App />
+    </Provider >
 
   </BrowserRouter>
 )
