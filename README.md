@@ -8,8 +8,16 @@ Para realizar o projeto, utilizei Adonis+node para o backend e React para o Fron
 
 # Para rodar a aplicação
 
-Banco de dados: na raiz do projeto rode no terminal o comando <strong>docker-compose up -d db</strong>
+1- Na raiz da aplicação rode os comandos para istalar as dependências e subir o container do Mysql:
 
-BackEnd: Entre na pasta /backend e rode o comando <strong>npm run dev</strong> no terminal.
+    npm run app
 
-FrontEnd: Entre na pasta /frontend e rode o comando <strong>npm run dev</strong> no terminal.
+    docker-compose up -d db
+
+2- Na pasta /backend e rode o comando:
+
+    npm run dev
+
+3- Na pasta /frontend e rode o comando:
+
+    npm run dev
