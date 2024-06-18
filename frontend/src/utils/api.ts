@@ -30,8 +30,8 @@ export async function fetchGitHubData(query: string): Promise<any> {
   }
 }
 
-export async function fetchCreateFavorite(body:BodyType){
-    try {
+export async function fetchCreateFavorite(body: BodyType) {
+  try {
     const response = await fetch(`${HOST}/favorite`, {
       method: 'POST',
       headers: {
@@ -69,10 +69,11 @@ export async function fetchDeleteFavorite(id: string): Promise<void> {
     const response = await fetch(`${HOST}/favorite/${id}`, {
       method: 'DELETE',
     });
+    console.log(response);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    return await response.json();
+    // return await response.json();
   } catch (error) {
     console.error('Failed to fetch data:', error);
     throw error;

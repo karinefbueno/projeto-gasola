@@ -6,7 +6,7 @@ import { useState } from "react";
 import CardUser from "../CardUser";
 import heart from '../../images/heart.svg';
 import heartEmpty from '../../images/heart_emp.svg'
-import { separarNomeComRegex } from "../../utils/functionSeparaNomes";
+// import { separarNomeComRegex } from "../../utils/functionSeparaNomes";
 
 const INICIAL_VALUE = {
     name: '',
