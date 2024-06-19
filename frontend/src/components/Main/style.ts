@@ -48,8 +48,8 @@ border: none;
 `
 
 export const ContainerCard = styled.div`
-margin: auto;
-justify-content: center;
+justify-content: flex-start;
+align-items: center;
 display: flex;
 flex-wrap: wrap;
 

@@ -6,11 +6,9 @@ export type ButtonProps = {
 
 export type ReposProps = {
 id: string;
-owner :{
 login: string;
 avatar_url: string;
 html_url: string,
-}
 }
 
 export type DataProps = 

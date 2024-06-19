@@ -1,22 +1,21 @@
 import { ContainerCardUser, ContainerInfos, ContainerName, Avatar, ContainerText, Heart, IconCat, ContainerIcon } from "./style";
-import {  UserProps } from "../../types/types";
-import { useEffect, useState , useContext} from "react";
-import { fetchCreateFavorite, fetchDeleteFavorite } from "../../utils/api";
+import { UserProps } from "../../types/types";
+import { useEffect, useState, useContext } from "react";
+import { fetchCreateFavorite } from "../../utils/api";
 import iconCat from "../../images/github_header.png";
 import { formatarData } from "../../utils/functionFormatData";
 import context from "../../Context/Context";
 
 
-function CardUser({ id, name, avatar_url, created_at, followers, following, location, login, public_repos, heartChecked, heartEmpty,html_url,isFavorite }: UserProps) {
+function CardUser({ id, name, avatar_url, created_at, followers, following, location, login, public_repos, heartChecked, heartEmpty, html_url, isFavorite }: UserProps) {
   const [checked, setChecked] = useState<boolean>(isFavorite);
-    const {setFavorited, favorited} = useContext(context);
+  const { deleteFavorite } = useContext(context);
 
-
-   useEffect(() => {
+  useEffect(() => {
     setChecked(isFavorite);
   }, [isFavorite]);
 
-  const body= {
+  const body = {
     id: id,
     name: name,
     login: login,
@@ -27,16 +26,12 @@ function CardUser({ id, name, avatar_url, created_at, followers, following, loca
   const handleChange = async () => {
     if (!checked) {
       setChecked(true);
-
       await fetchCreateFavorite(body);
 
     } else {
       setChecked(false);
-      setFavorited(!favorited)
-      console.log(favorited)
-      await fetchDeleteFavorite(id)
-      
-    }
+      deleteFavorite(body.id);
+   }
 
   };
 
@@ -63,25 +58,25 @@ function CardUser({ id, name, avatar_url, created_at, followers, following, loca
           </p>
         </ContainerInfos>
         <div>
-        <ContainerIcon>
-        <p>{location}</p>
-        </ContainerIcon>
-        <ContainerIcon>
-         <IconCat src={iconCat} alt="" />  
-        <a href={html_url}>{html_url}</a>
-        </ContainerIcon>
+          <ContainerIcon>
+            <p>{location}</p>
+          </ContainerIcon>
+          <ContainerIcon>
+            <IconCat src={iconCat} alt="" />
+            <a target="_blank" href={html_url}>{html_url}</a>
+          </ContainerIcon>
         </div>
       </ContainerText>
       <input
-          id={`favorite-checkbox-${id}`}
-          onChange={handleChange}
-          checked={checked}
-          type="checkbox"
-          style={{ display: 'none' }} 
-        />
-        <label htmlFor={`favorite-checkbox-${id}`} style={{ cursor: 'pointer' }}>
-          <Heart  src={checked ? heartChecked : heartEmpty} alt="favorite" />
-        </label>
+        id={`favorite-checkbox-${id}`}
+        onChange={handleChange}
+        checked={checked}
+        type="checkbox"
+        style={{ display: 'none' }}
+      />
+      <label htmlFor={`favorite-checkbox-${id}`} style={{ cursor: 'pointer' }}>
+        <Heart src={checked ? heartChecked : heartEmpty} alt="favorite" />
+      </label>
     </ContainerCardUser>
   );
 }
