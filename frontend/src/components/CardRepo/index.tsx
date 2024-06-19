@@ -5,8 +5,7 @@ import { fetchGitUser } from "../../utils/api";
 import { useState } from "react";
 import CardUser from "../CardUser";
 import heart from '../../images/heart.svg';
-import heartEmpty from '../../images/heart_emp.svg'
-import { separarNomeComRegex } from "../../utils/functionSeparaNomes";
+import heartEmpty from '../../images/heart_emp.svg';
 
 const INICIAL_VALUE = {
     name: '',
@@ -23,13 +22,13 @@ const INICIAL_VALUE = {
 }
 
 
-function CardRepo({id, owner}: ReposProps) {
+function CardRepo({id, login, html_url, avatar_url}: ReposProps) {
   const [user, setUser] = useState<UserProps>(INICIAL_VALUE);
   const [showUserCard, setShowUserCard] = useState<boolean>(false);
 
   const handleClick = async () => {
     try {
-      const data = await fetchGitUser(owner.login);
+      const data = await fetchGitUser(login);
       setUser(data);
       setShowUserCard(!showUserCard);
     } catch (error) {
@@ -63,10 +62,11 @@ function CardRepo({id, owner}: ReposProps) {
       }
       {!showUserCard &&
         <ContainerCardRepo id={id}>
-         <LinkGitHub href={owner.html_url}>GitHub</LinkGitHub>
+         <LinkGitHub target="_blank"
+         href={html_url}>GitHub</LinkGitHub>
           <button onClick={handleClick}>
-            <Img src={owner.avatar_url} alt="user-avatar" />
-              <h4>{owner.login}</h4>
+            <Img src={avatar_url} alt="user-avatar" />
+              <h4>{login}</h4>
           </button>
         </ContainerCardRepo>
       }
