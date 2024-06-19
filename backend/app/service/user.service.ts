@@ -15,15 +15,11 @@ export default class UserService {
         throw new Error('Usuário não encontrado ou sem ID')
       }
 
-      // Verifique se favoriteService foi inicializado corretamente
       if (!this.favoriteService || !this.favoriteService.isFavorite) {
         throw new Error('favoriteService não foi inicializado corretamente')
       }
 
-      // Verifique se o usuário é favorito
       const isFavorite = await this.favoriteService.isFavorite(response.id)
-
-      console.log('ID do usuário:', response.id)
 
       return { status: 'SUCCESSFUL', data: { ...response, isFavorite } }
     } catch (error) {
